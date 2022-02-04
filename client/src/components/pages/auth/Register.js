@@ -44,7 +44,7 @@ const Register = props => {
             setAlert('Please fill all fields!','danger')
         }else if(start_time.length != 5 || end_time.length != 5 || breakfast.length != 5 || lunch.length != 5 || dinner.length != 5 ){
             setAlert('Enter timing in 24hr format. eg 09.00, 05.00, 15.00, 21.00','danger')
-        }else if(password.length > 6){
+        }else if(password.length < 6){
             setAlert('Password must be greater than 6 characters')
         }else if(isNaN(Number(start_time)) || isNaN(Number(end_time)) || isNaN(Number(breakfast)) || isNaN(Number(lunch)) || isNaN(Number(dinner)) ){
             setAlert('Enter timing in 24hr format. eg 09.00, 05.00, 15.00, 21.00','danger')
