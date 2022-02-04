@@ -780,7 +780,6 @@ h2 {
 	display: grid;
 	height: 30rem;
 	margin: 2rem;
-	/* padding: 3%; */
 	border-radius: 10px;
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 	transition: .4s ease;
@@ -791,8 +790,6 @@ h2 {
 }
 
 .motivational-img{
-	/* position: relative;
-	left: 80%; */
 	height: 50%;
 	width: 40%;
 	margin: 1rem;
