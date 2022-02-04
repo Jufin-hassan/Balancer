@@ -13,9 +13,9 @@ const router = express.Router()
 
 
 
-// @Route   POST api/user
-// @desc    registering user
-// @access  public
+//  POST api/user
+//  registering user
+//  public
 router.post('/',[
     check('name','Please enter your name!')
     .not()
@@ -23,11 +23,11 @@ router.post('/',[
     check('email','Please enter a valid Email').isEmail(),
     check('password','Password must be atleast 6 charecters long')
     .isLength({min:6}),
-    check('start_time','Please enter your work beginning time').notEmpty(),
-    check('end_time','Please enter your work ending time').notEmpty(),
-    check('breakfast','Please enter your breakfast time').notEmpty(),
-    check('lunch','Please enter your lunch time').notEmpty(),
-    check('dinner','Please enter your dinner time').notEmpty(),
+    check('start_time','Please enter your work beginning time').isLength({min:5, max:5}),
+    check('end_time','Please enter your work ending time').isLength({min:5, max:5}),
+    check('breakfast','Please enter your breakfast time').isLength({min:5, max:5}),
+    check('lunch','Please enter your lunch time').isLength({min:5, max:5}),
+    check('dinner','Please enter your dinner time').isLength({min:5, max:5}),
 ],async (req,res)=> {
     const errors = validationResult(req)
     if(!errors.isEmpty()){
@@ -54,6 +54,7 @@ router.post('/',[
             dinner
         })
 
+        // salting the password
         const salt = await bcrypt.genSalt(10)
         user.password = await bcrypt.hash(password,salt)
         await user.save()
@@ -63,6 +64,8 @@ router.post('/',[
                 id : user.id
             }
         }
+
+        // signing jwt 
         jwt.sign(
             payload,
             config.get('jwtSecret'),
@@ -102,14 +105,13 @@ router.put('/:id',auth,async (req,res)=> {
     try {
         let user = await User.findById(req.params.id)
 
-        //contact is thr?
-        if(!user) res.status(404).json({msg:'Contact not found'})
+        //checking user
+        if(!user) res.status(404).json({msg:'user not found'})
 
-        //Only the user who created the contact can modify
-        //wen hacker uses postman or ajax this saves us
+        // authenticating user
         if(user._id.toString() !== req.user.id) res.status(401).json({msg:'Unauthorized Access'})
 
-        contact = await User.findByIdAndUpdate(req.params.id,
+        user = await User.findByIdAndUpdate(req.params.id,
             {$set:userUpdate},
             {new:true}
             )

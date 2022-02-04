@@ -56,7 +56,7 @@ const Login = props => {
                 </div>
                 <div className="col-lg-4 ">
                     <div className='form-container'>
-                        <h1>Account <span className='text-pink'>Login</span></h1>
+                        <h1>Account <span className='text-green'>Login</span></h1>
                         <form onSubmit={onSubmit} autocomplete="off">
                             <div className="form-group">
                                 <label htmlFor="email">Email</label>

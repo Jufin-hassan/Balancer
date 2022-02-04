@@ -8,9 +8,9 @@ const auth = require('../middleware/auth')
 
 const router = express.Router()
 
-// @Route   POST api/auth
-// @desc    checking user credentials
-// @access  public
+// POST api/auth
+// checking user credentials
+// public
 router.post('/',[
     check('email','Please enter the valid email!').isEmail(),
     check('password','Please enter the password').exists()
@@ -59,9 +59,9 @@ router.post('/',[
 
 })
 
-// @Route   GET api/auth
-// @desc    Logging in the user
-// @access  private
+// GET api/auth
+// Logging in the user
+//  private
 router.get('/',auth,async (req,res)=> {
     try {
         const user =  await User.findById(req.user.id).select('-password')

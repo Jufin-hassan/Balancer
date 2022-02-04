@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-//for depracation warning!
+//for depracation warning
 mongoose.set('useCreateIndex', true);
 
 const userSchema = mongoose.Schema({

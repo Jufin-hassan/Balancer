@@ -11,7 +11,7 @@ const MealRemaider = () => {
     const { user } = authContext
 
     const images =[img1,img2,img3,img4]
-    var rand = Math.floor(Math.random() * 5)
+    var rand = Math.ceil(Math.random() * 3)
 
     // console.log(user.start_time);
 

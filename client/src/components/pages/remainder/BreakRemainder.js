@@ -14,7 +14,7 @@ const BreakRemainder = () => {
     const { user } = authContext
 
     const images =[img1,img2,img3,img4,img5,img6,img7]
-    var rand = Math.floor(Math.random() * 6)
+    var rand = Math.ceil(Math.random() * 6)
 
   return <div className='remainder-card'>
        <div>

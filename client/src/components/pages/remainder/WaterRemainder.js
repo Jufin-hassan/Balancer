@@ -11,7 +11,7 @@ const WaterRemainder = () => {
     const { user } = authContext
 
     const images =[img1,img2,img3,img4]
-    var rand = Math.floor(Math.random() * 4)
+    var rand = Math.ceil(Math.random() * 3)
 
   return <div className='remainder-card'>
        <div>

@@ -516,9 +516,10 @@ h2 {
 	color: #ff4c68;
 }
 
-.text-pink{
+.text-green{
 	color: #219F94;
 }
+
 
 .form-group > input {
 	height: 70%;
@@ -792,8 +793,8 @@ h2 {
 .motivational-img{
 	/* position: relative;
 	left: 80%; */
-	height: 45%;
-	width: 45%;
+	height: 50%;
+	width: 40%;
 	margin: 1rem;
 	border-radius: 7%;
 }

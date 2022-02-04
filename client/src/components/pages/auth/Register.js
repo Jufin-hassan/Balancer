@@ -40,9 +40,16 @@ const Register = props => {
 
     const onSubmit = e => {
         e.preventDefault()
-        if (name === '' || email === '' || password === '') {
+        if (name === '' || email === '' || password === '' || start_time === '' || end_time === '' || breakfast === '' || lunch === '' || dinner === '') {
             setAlert('Please fill all fields!','danger')
-        }else{
+        }else if(start_time.length != 5 || end_time.length != 5 || breakfast.length != 5 || lunch.length != 5 || dinner.length != 5 ){
+            setAlert('Enter timing in 24hr format. eg 09.00, 05.00, 15.00, 21.00','danger')
+        }else if(password.length > 6){
+            setAlert('Password must be greater than 6 characters')
+        }else if(isNaN(Number(start_time)) || isNaN(Number(end_time)) || isNaN(Number(breakfast)) || isNaN(Number(lunch)) || isNaN(Number(dinner)) ){
+            setAlert('Enter timing in 24hr format. eg 09.00, 05.00, 15.00, 21.00','danger')
+        }
+        else{
             register({
                 name,
                 email,
@@ -58,39 +65,39 @@ const Register = props => {
 
     return (
         <div className='form-container'>
-            <h1>Account <span className='text-pink'>Register</span></h1>
+            <h1>Account <span className='text-green'>Register</span></h1>
             <form onSubmit={onSubmit} autocomplete="off">
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
-                    <input type="text" name="name" value={name} onChange={onChange} />
+                    <input type="text" name="name" placeholder='Eg. John' value={name} onChange={onChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="emial">Email</label>
-                    <input type="email" name="email" value={email} onChange={onChange} />
+                    <input type="email" name="email" placeholder='Eg. John@gmail.com' value={email} onChange={onChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password</label>
-                    <input type="password" name="password" value={password} onChange={onChange} />
+                    <input type="password" name="password" placeholder='Eg. ******' value={password} onChange={onChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="start_time">Work Starting Time</label>
-                    <input type="text" name="start_time" value={start_time} onChange={onChange} />
+                    <input type="text" name="start_time" placeholder='Eg. 08.00, 14.00, 21.00' value={start_time} onChange={onChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="end_time">Work Ending Time</label>
-                    <input type="text" name="end_time" value={end_time} onChange={onChange} />
+                    <input type="text" name="end_time" placeholder='Eg. 08.00, 14.00, 21.00' value={end_time} onChange={onChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="breakfast">Breakfast</label>
-                    <input type="text" name="breakfast" value={breakfast} onChange={onChange} />
+                    <input type="text" name="breakfast" placeholder='Eg. 08.00, 14.00, 21.00' value={breakfast} onChange={onChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="lunch">Lunch</label>
-                    <input type="text" name="lunch" value={lunch} onChange={onChange} />
+                    <input type="text" name="lunch" placeholder='Eg. 08.00, 14.00, 21.00' value={lunch} onChange={onChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="dinner">Dinner</label>
-                    <input type="text" name="dinner" value={dinner} onChange={onChange} />
+                    <input type="text" name="dinner" placeholder='Eg. 08.00, 14.00, 21.00' value={dinner} onChange={onChange} />
                 </div>
                 
                 <input type="submit" value="Register" className='btn btn-block btn-pink reg-btn' />
